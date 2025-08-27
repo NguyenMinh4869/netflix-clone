@@ -1,0 +1,28 @@
+.navbar{
+    width: 100%;
+    padding: 20px 6%;
+    display: flex;
+    justify-content: space-between;
+    position: fixed;
+    font-size: 14px;
+    color: #e5e5e5;
+    background-color: linear-gradient(180-deg, rgpa(0,0,0,0.7) 10%,
+    transparent);
+    z-index: -1;
+}
+.navbar-left{
+    display: flex;
+    align-items: center;
+    gap: 50px;
+}
+.navbar-left img{
+    width: 90px;
+}
+.navbar-left ul{
+    display: flex;
+    list-style: none ;
+    gap: 20px;
+}
+.navbar-left ul li{
+    cursor: pointer;
+}
