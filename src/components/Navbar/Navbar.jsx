@@ -6,7 +6,7 @@ import bell_icon from '../../assets/bell_icon.svg'
 import profile_img from '../../assets/profile_img.png'
 import caret_icon from '../../assets/caret_icon.svg'
 import { logout } from '../../firebase'
-const Navbar = () => {
+const Navbar = ({ onLogout }) => {
   const navRef = useRef();
   useEffect(()=>{
     window.addEventListener('scroll',()=>{
@@ -17,6 +17,18 @@ const Navbar = () => {
       }
     })
   },[])
+
+  const handleLogout = async () => {
+    try {
+      await logout();
+      if (onLogout) {
+        onLogout();
+      }
+    } catch (error) {
+      console.error('Logout error:', error);
+    }
+  }
+
   return (
     <div ref={(navRef)} className='navbar'>
       <div className="navbar-left">
@@ -37,7 +49,8 @@ const Navbar = () => {
           <img src={profile_img} alt="" className='profile-img' />
           <img src={caret_icon} alt="" />
           <div className="dropdown">
-            <p onClick={()=>{logout()}}>Sign Out of Netflix</p>
+            <p onClick={() => window.location.reload()}>Switch Profile</p>
+            <p onClick={handleLogout}>Sign Out of Netflix</p>
           </div>
         </div>
       </div>
